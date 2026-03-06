@@ -546,24 +546,24 @@ using namespace std;
 //  222
 //   33
 //    4
-// int main(){
-//     int n;
-//     cout<<"Enter value of n: ";
-//     cin>>n;
+int main(){
+    int n;
+    cout<<"Enter value of n: ";
+    cin>>n;
 
-//     int num=1;
-//     for(int i=1;i<=n; i++){
-//         for (int j=1; j<=i-1; j++){
-//             cout<<" ";
-//         }
-//         for( int k=0; k<=n-i; k++){
-//             cout<<num;
-//         }
-//         cout<<endl;
-//         num++;
-//     }
-//     return 0;
-// }
+    int num=1;
+    for(int i=1;i<=n; i++){
+        for (int j=1; j<=i-1; j++){
+            cout<<" ";
+        }
+        for( int k=0; k<=n-i; k++){
+            cout<<num;
+        }
+        cout<<endl;
+        num++;
+    }
+    return 0;
+}
 
 
 
