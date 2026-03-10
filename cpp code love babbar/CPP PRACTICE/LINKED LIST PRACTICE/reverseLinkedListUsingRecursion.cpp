@@ -34,7 +34,7 @@ void reverse(Node* &curr,Node* &head, Node* &prev){
         return;
     }
 
-    Node* forward= NULL;
+    Node* forward= curr->next;
     reverse(forward, head, curr);
     curr->next= prev;
 
@@ -57,6 +57,6 @@ int main(){
     insertAtTail(tail, 16);
     insertAtTail(tail,17);
     print(head);
-    reverseLinkedList()
+    reverseLinkedList(head);
     print(head);
 }
