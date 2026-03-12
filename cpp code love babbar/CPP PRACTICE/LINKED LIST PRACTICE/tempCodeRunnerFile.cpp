@@ -54,22 +54,3 @@ Node* floydsLoopDetect(Node* &head){
 }
 
 int main(){
-    Node* node1= new Node(1);
-    Node* head= node1;
-    Node* tail= node1;
-
-    insertAtTail(tail,2);
-    insertAtTail(tail,3);
-    insertAtTail(tail,4);
-    insertAtTail(tail,5);
-    
-    Node* temp= head;
-    while(temp->data!=3 && temp!=NULL){
-        temp= temp->next;
-    }
-    tail->next= temp;
-
-    cout<< (floydsLoopDetect(head)? "yes loop detected":"No loop not present");
-
-    return 0;
-}
