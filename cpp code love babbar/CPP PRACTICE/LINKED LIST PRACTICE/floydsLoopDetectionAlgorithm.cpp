@@ -64,6 +64,17 @@ Node* getStartingNode(Node* &head){
     return slow;
 }
 
+void removeLoop(Node* &head){
+    if(head==NULL) return;
+    Node* startingNode= getStartingNode(head);
+    if(startingNode==NULL) return;
+    Node* temp= startingNode;
+    while(temp->next!=startingNode){
+        temp= temp->next;
+    }
+    temp->next=NULL;
+}
+
 int main(){
     Node* node1= new Node(1);
     Node* head= node1;
@@ -83,6 +94,8 @@ int main(){
     cout<< (floydsLoopDetect(head)? "yes loop detected":"No loop not present");
 
     cout<<endl<<getStartingNode(head)->data<<" is the starting node of the loop"<<endl;
+    removeLoop(head);
+    print(head);
 
     return 0;
 }
