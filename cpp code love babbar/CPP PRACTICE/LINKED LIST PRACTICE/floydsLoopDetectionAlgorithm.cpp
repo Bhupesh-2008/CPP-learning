@@ -53,6 +53,17 @@ Node* floydsLoopDetect(Node* &head){
     return NULL;
 }
 
+Node* getStartingNode(Node* &head){
+    if(head==NULL) return NULL;
+    Node*intersection= floydsLoopDetect(head);
+    Node* slow= head;
+    while(slow!=intersection){
+        slow=slow->next;
+        intersection= intersection->next;
+    }
+    return slow;
+}
+
 int main(){
     Node* node1= new Node(1);
     Node* head= node1;
@@ -70,6 +81,8 @@ int main(){
     tail->next= temp;
 
     cout<< (floydsLoopDetect(head)? "yes loop detected":"No loop not present");
+
+    cout<<endl<<getStartingNode(head)->data<<" is the starting node of the loop"<<endl;
 
     return 0;
 }
