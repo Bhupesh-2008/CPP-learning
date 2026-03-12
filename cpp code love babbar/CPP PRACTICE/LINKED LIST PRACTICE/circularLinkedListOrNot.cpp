@@ -44,6 +44,22 @@ void insert(Node* &tail,int element,int d){
     }
 }
 
+bool detectLoop(Node* &head){
+    if(head==NULL) return false;
+    Node* temp= head;
+    map<Node*,bool>visited;
+
+    while(temp!=NULL){
+        if(visited[temp]== true){
+            return 1;
+        }
+        visited[temp]=true;
+        temp= temp->next;
+    }
+
+    return 0;
+}
+
 bool checkLinkedListOrNot(Node* &tail){
     if(tail==NULL){
         return true;
@@ -69,7 +85,9 @@ int main(){
 
     print(tail);
 
-    cout<<checkLinkedListOrNot(tail);
+    cout<<checkLinkedListOrNot(tail)<<endl;
+
+    cout<<detectLoop(tail)<<endl;
 
     return 0;
 }

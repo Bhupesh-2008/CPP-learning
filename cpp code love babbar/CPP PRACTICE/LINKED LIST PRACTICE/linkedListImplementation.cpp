@@ -117,6 +117,21 @@ void print(Node* &head){
     }
     cout<<endl;
 }
+bool detectLoop(Node* &head){
+    if(head==NULL) return false;
+    Node* temp= head;
+    map<Node*,bool>visited;
+
+    while(temp!=NULL){
+        if(visited[temp]== true){
+            return 1;
+        }
+        visited[temp]=true;
+        temp= temp->next;
+    }
+
+    return 0;
+}
 
 int main(){
     Node* node1= new Node(10);
@@ -156,6 +171,8 @@ int main(){
 
     deleteNodeAtValue(head,25);
     print(head);
+
+    cout<< detectLoop(head);
 
     return 0;
 }
