@@ -29,6 +29,9 @@ void insertAttail(Node* &tail, int d){
 }
 
 Node* deleteDuplicate(Node* & head){
+    if(head==NULL){
+        return NULL;
+    }
     Node* curr= head;
     while(curr!= NULL && curr->next!=NULL){
         if(curr->next->data== curr->data){
