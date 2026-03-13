@@ -67,11 +67,11 @@ int main(){
 
     insertAtTail(tail,2);
     insertAtTail(tail,2);
-    insertAttail(tail, 3);
-    insertAttail(tail,3);
-    insertAttail(tail,3);
-    insertAttail(tail, 4);
-    insertAttail(tail,4);
+    insertAtTail(tail, 3);
+    insertAtTail(tail,3);
+    insertAtTail(tail,3);
+    insertAtTail(tail, 4);
+    insertAtTail(tail,4);
 
     print (head);
 
