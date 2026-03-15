@@ -49,6 +49,7 @@ Node* reverse(Node* &head){
 }
 
 bool check(Node* &head){
+    if(head->next==NULL) return true;
     int middlePos= len(head)/2;
     Node* temp= head;
     int cnt=0;
