@@ -41,6 +41,10 @@ Node* mergedLL(Node* &head1, Node* &head2){
         second= head1;
     }
 
+    if(first->next==NULL){
+        first->next= second;
+        return first;
+    }
     Node* curr1= first;
     Node* next1=curr1->next;
     Node* curr2= second;
