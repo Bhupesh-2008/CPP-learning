@@ -46,24 +46,44 @@ Node* findMid(Node* head){
 Node* merge(Node* left, Node* right){
     if(left==NULL) return right;
     if(right==NULL) return left;
-
-    Node ans(-1);
-    Node* temp= &ans;
-     
-    while(left!=NULL && right!=NULL){
-        if(left->data<right->data){
-            temp->next= left;
-            temp= left;
-            left= left->next;
-        }else{
-            temp->next= right;
-            temp= right;
-            right= right->next;
-        }
+    Node*first;
+    Node* second;
+    if(left->data<= right->data){
+        first= left;
+        second= right;
+    }
+    else{
+        first= right;
+        second= left;
     }
 
-    temp->next=(left!=NULL)?left:right;
-    return ans.next;
+    if(first->next==NULL){
+        first->next= second;
+        return first;
+    }
+    Node* curr1= first;
+    Node* next1=curr1->next;
+    Node* curr2= second;
+
+    while(next1!=NULL && curr2!= NULL){
+        if(curr1->data<=curr2->data && curr2->data <= next1->data){
+            curr1->next= curr2;
+           Node* next2= curr2->next;
+            curr2->next= next1;
+            curr1= curr2;
+            curr2= next2;
+        }
+        else{
+            curr1= next1;
+            next1= next1->next;
+            if(next1==NULL){
+                curr1->next= curr2;
+                return first;
+            }
+        }
+
+    }
+    return first;
 }
 
 Node* mergeSort(Node* &head){
