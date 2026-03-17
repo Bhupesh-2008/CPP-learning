@@ -43,7 +43,6 @@ Node* add(Node* &first, Node* &second){
     
     int carry=0;
     Node*ans= new Node(-1);
-    Node*headAns= ans;
     Node*tailAns= ans;
     while(temp1!=NULL || temp2!=NULL ||carry!=0){
         int sum= carry ;
