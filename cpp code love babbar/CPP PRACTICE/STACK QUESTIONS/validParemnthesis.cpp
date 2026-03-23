@@ -2,7 +2,9 @@
 using namespace std;
 
 bool matches(char top, char ch){
-    if(ch==')'&& top=='(' || ch=='}' && top=='{' || ch==']' && top=='['){
+    if(ch==')'&& top=='('|| 
+       ch=='}'&& top=='{'||
+       ch==']'&& top=='['  ){
         return true;
     }
     else return false;
