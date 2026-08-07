@@ -1,0 +1,113 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node* left;
+        Node* right;
+
+        Node(int x){
+            this->data=x;
+            this->left=NULL;
+            this->right=NULL;
+        }
+};
+
+void LevelOrderTraversal(Node* root){
+    if(root==NULL) return ;
+
+    queue<Node*>q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+        Node* temp= q.front();
+        q.pop();
+
+        if(temp==NULL){
+            cout<<"\n";
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }
+        else{
+            cout<<temp->data<<" ";
+            if(temp->left){
+                q.push(temp->left);
+            }
+
+            if(temp->right){
+                q.push(temp->right);
+        }
+        }
+    }
+}
+
+Node* insertToBSTtree(Node* root, int d){
+    if(root==NULL){
+        root= new Node(d);
+        return root;
+    }
+
+    if(d>root->data){
+        root->right= insertToBSTtree(root->right,d);
+    }else{
+        root->left= insertToBSTtree(root->left,d);
+    }
+
+    return root;
+}
+
+void takeInput(Node* &root){
+    int data;
+    cin>>data;
+    while(data!=-1){
+        root=insertToBSTtree(root,data);
+        cin>>data;
+    }
+}
+
+pair<int,int> predecessorSuccessor(Node* root, int key){
+    Node* temp= root;
+    int pred=-1;
+    int succ=-1;
+
+    while(temp->data!=key){
+        if(temp->data<key){
+            pred= temp->data;
+            temp= temp->right;
+        }else{
+            succ= temp->data;
+            temp= temp->left;
+        }
+    }
+
+    // pred
+    Node* leftTree=temp->left;
+    while(leftTree){
+        pred= leftTree->data;
+        leftTree= leftTree->right;
+    }
+
+    //succ
+    Node* rightTree= temp->right;
+    while(rightTree){
+        succ= rightTree->data;
+        rightTree= rightTree->left;
+    }
+
+    pair<int,int> ans= make_pair(pred,succ);
+    return ans;
+}
+
+int main(){
+    Node* root= NULL;
+    cout<<"Enter the datato create a BST"<<endl;
+    takeInput(root);
+
+    cout<<endl<<"Printing the BST Tree: "<<endl;
+    LevelOrderTraversal(root);
+    
+    return 0;
+}
