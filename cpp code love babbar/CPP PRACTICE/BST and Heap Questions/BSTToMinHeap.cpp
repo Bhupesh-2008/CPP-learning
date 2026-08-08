@@ -75,7 +75,7 @@ void inorder(Node* root, vector<int>& v){
     inorder(root->right,v);
 }
 
-void fillPreorder(Node* root,vector<int>inorder,int index){
+void fillPreorder(Node* root,vector<int>inorder,int &index){
     if(root==NULL) return;
     root->data=inorder[index++];
     fillPreorder(root->left,inorder,index);
